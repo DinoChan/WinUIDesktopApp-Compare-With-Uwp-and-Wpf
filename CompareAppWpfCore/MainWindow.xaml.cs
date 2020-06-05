@@ -1,27 +1,21 @@
-﻿using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Media.Animation;
-using Microsoft.UI.Xaml.Shapes;
-using System;
-using Windows.Foundation;
-using Windows.UI;
+﻿using System;
+using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Shapes;
 
-// The Blank Window item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-
-namespace MyWinUIDesktopApp
+namespace CompareAppWpfCore
 {
     /// <summary>
-    /// An empty window that can be used on its own or navigated to within a Frame.
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public sealed partial class MainWindow : Window
+    public partial class MainWindow : Window
     {
         public MainWindow()
         {
-            this.InitializeComponent();
-            Root.Loaded += OnLoaded;
+            InitializeComponent();
+            Loaded += OnLoaded;
         }
-
-
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
@@ -36,7 +30,7 @@ namespace MyWinUIDesktopApp
                     RadiusY = 98,
                     StrokeThickness = 3,
                     Stroke = new SolidColorBrush(Color.FromArgb(255, 75, 75, (byte)(i * 250d / 50d))),
-                    RenderTransformOrigin = new Point(0.5f, 0.5f)
+                    RenderTransformOrigin = new Point(0.5, 0.5)
                 };
                 Root.Children.Add(rectangle);
                 var angle = i * 360d / 50d;
@@ -48,9 +42,10 @@ namespace MyWinUIDesktopApp
                 rectangle.RenderTransform = transform;
 
                 var storyboard = new Storyboard();
-                storyboard.Children.Add(new DoubleAnimation { Duration = TimeSpan.FromSeconds(1), From = angle, To = angle + 360 });
-                Storyboard.SetTarget(storyboard, transform);
-                Storyboard.SetTargetProperty(storyboard, "Angle");
+                var animation = new DoubleAnimation { Duration = TimeSpan.FromSeconds(1), From = angle, To = angle + 360 };
+                storyboard.Children.Add(animation);
+                Storyboard.SetTarget(animation, rectangle);
+                Storyboard.SetTargetProperty(animation, new PropertyPath("RenderTransform.Angle"));
                 storyboard.RepeatBehavior = RepeatBehavior.Forever;
                 storyboard.Begin();
 
