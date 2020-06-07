@@ -1,6 +1,8 @@
 # WinUIDesktopApp-Compare-With-Uwp-and-Wpf
 
-为了验证 WinUI 的性能我写了下面这些代码，然后分别移植到 WPF .Net Framework
+2020-06-07
+
+为了验证 WinUI 3.0 的性能我写了下面这些代码，然后分别移植到 WPF .Net Framework
  4.8、WPF .NET 5、UWP、WinUI，WPF 和 UWP 的代码稍微有一点出入：
 
 ``` cs
