@@ -1,5 +1,7 @@
 # WinUIDesktopApp-Compare-With-Uwp-and-Wpf
 
+[WinUI 3 试玩报告](https://www.cnblogs.com/dino623/p/Get-started-with-WinUI-3-for-desktop-apps.html)
+
 2020-06-07
 
 为了验证 WinUI 3.0 的性能我写了下面这些代码，然后分别移植到 WPF .Net Framework
